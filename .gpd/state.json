@@ -1,0 +1,274 @@
+{
+  "project_reference": {
+    "project_md_updated": null,
+    "core_research_question": null,
+    "current_focus": null
+  },
+  "project_contract": {
+    "schema_version": 1,
+    "scope": {
+      "question": "Can the hidden topological transitions in emergent magnetic monopole lattices be precisely replicated using the exact steepest descent method?",
+      "in_scope": [
+        "Strict replication of Phys. Rev. B 107, 094437 (2023)",
+        "Implementation of the Hamiltonian with RKKY, biquadratic, and DM interactions",
+        "Exact steepest descent method for thermodynamic limit partition function",
+        "Calculation of phase diagrams in p-h and h-T planes",
+        "Identification of 3Q, 4Q, and 5Q HLs and their monopole densities Nm"
+      ],
+      "out_of_scope": [
+        "Inclusion of conduction electron degrees of freedom",
+        "Extensions to other lattice geometries",
+        "Experimental data fitting beyond the scope of the original paper"
+      ],
+      "unresolved_questions": [
+        "Optimization of JAX/Optax hyperparameters for convergence on V100 vs A100"
+      ]
+    },
+    "context_intake": {
+      "must_read_refs": [
+        "Ref-01"
+      ],
+      "must_include_prior_outputs": [],
+      "user_asserted_anchors": [
+        "Reproduce specific transition points at p \u2248 0.517 and 0.529"
+      ],
+      "known_good_baselines": [
+        "Phase diagrams and Nm values in Phys. Rev. B 107, 094437"
+      ],
+      "context_gaps": [],
+      "crucial_inputs": [
+        "The provided txt version of Phys. Rev. B 107, 094437"
+      ]
+    },
+    "approach_policy": {
+      "formulations": [
+        "continuum representation with direct observable X"
+      ],
+      "allowed_estimator_families": [
+        "direct estimator"
+      ],
+      "forbidden_estimator_families": [
+        "proxy-only estimator"
+      ],
+      "allowed_fit_families": [
+        "benchmark-motivated ansatz"
+      ],
+      "forbidden_fit_families": [
+        "pure convenience fit"
+      ],
+      "stop_and_rethink_conditions": [
+        "First result only validates a proxy while the decisive anchor remains unchecked"
+      ]
+    },
+    "observables": [
+      {
+        "id": "obs-Nm",
+        "name": "Monopole charge per MUC",
+        "kind": "scalar",
+        "definition": "Number of monopoles and antimonopoles per magnetic unit cell",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-C",
+        "name": "Specific heat",
+        "kind": "curve",
+        "definition": "C per spin as a function of h or T",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-chi",
+        "name": "Scalar spin chirality",
+        "kind": "curve",
+        "definition": "Average scalar spin chirality \u03c7sc",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-m_eta",
+        "name": "Order parameters",
+        "kind": "scalar",
+        "definition": "m_eta = (1/N0) SQ_eta . S-Q_eta",
+        "regime": null,
+        "units": null
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim-rep-phases",
+        "statement": "Precisely reproduce the p-h and h-T phase diagrams from the original paper",
+        "observables": [
+          "obs-Nm",
+          "obs-C",
+          "obs-chi",
+          "obs-m_eta"
+        ],
+        "deliverables": [
+          "deliv-phase-ph",
+          "deliv-phase-hT"
+        ],
+        "acceptance_tests": [
+          "test-bench-p"
+        ],
+        "references": [
+          "Ref-01"
+        ]
+      }
+    ],
+    "deliverables": [
+      {
+        "id": "deliv-phase-ph",
+        "kind": "figure",
+        "path": null,
+        "description": "p-h phase diagrams identifying 3Q, 4Q, 5Q phases",
+        "must_contain": [
+          "Phase boundaries",
+          "Nm values"
+        ]
+      },
+      {
+        "id": "deliv-phase-hT",
+        "kind": "figure",
+        "path": null,
+        "description": "h-T phase diagrams for p=0.4, 0.5, 0.6",
+        "must_contain": [
+          "C and dm/dh anomalies",
+          "Nm jumps"
+        ]
+      }
+    ],
+    "acceptance_tests": [
+      {
+        "id": "test-bench-p",
+        "subject": "claim-rep-phases",
+        "kind": "benchmark",
+        "procedure": "Compare calculated p-values for 3Q-5Q and 5Q-4Q transitions against p \u2248 0.517 and 0.529",
+        "pass_condition": "Agreement within 10f reported values",
+        "evidence_required": [
+          "deliv-phase-ph",
+          "Ref-01"
+        ],
+        "automation": "hybrid"
+      }
+    ],
+    "references": [
+      {
+        "id": "Ref-01",
+        "kind": "paper",
+        "locator": "Phys. Rev. B 107, 094437 (2023)",
+        "aliases": [
+          "Kato-Motome 2023"
+        ],
+        "role": "benchmark",
+        "why_it_matters": "Primary source for Hamiltonian, method, and target results",
+        "applies_to": [
+          "claim-rep-phases"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "execution",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "compare",
+          "cite"
+        ]
+      }
+    ],
+    "forbidden_proxies": [
+      {
+        "id": "fp-qualitative",
+        "subject": "claim-rep-phases",
+        "proxy": "Qualitative agreement of phase shapes without matching specific critical values (p, h, T)",
+        "reason": "Insufficient for a strict replication"
+      }
+    ],
+    "links": [
+      {
+        "id": "link-1",
+        "source": "claim-rep-phases",
+        "target": "deliv-phase-ph",
+        "relation": "supports",
+        "verified_by": [
+          "test-bench-p"
+        ]
+      },
+      {
+        "id": "link-2",
+        "source": "claim-rep-phases",
+        "target": "deliv-phase-hT",
+        "relation": "supports",
+        "verified_by": [
+          "test-bench-p"
+        ]
+      }
+    ],
+    "uncertainty_markers": {
+      "weakest_anchors": [
+        "Convergence of steepest descent method on V100 hardware compared to A100"
+      ],
+      "unvalidated_assumptions": [
+        "Thermodynamic limit approximations in the steepest descent method"
+      ],
+      "competing_explanations": [],
+      "disconfirming_observations": [
+        "Failure to reproduce the 5Q intermediate phase at p \u2248 0.52"
+      ]
+    }
+  },
+  "position": {
+    "current_phase": null,
+    "current_phase_name": null,
+    "total_phases": null,
+    "current_plan": null,
+    "total_plans_in_phase": null,
+    "status": null,
+    "last_activity": null,
+    "last_activity_desc": null,
+    "progress_percent": 0,
+    "paused_at": null
+  },
+  "active_calculations": [],
+  "intermediate_results": [],
+  "open_questions": [
+    "Optimization of JAX/Optax hyperparameters for convergence on V100 vs A100"
+  ],
+  "performance_metrics": {
+    "rows": []
+  },
+  "decisions": [],
+  "approximations": [],
+  "convention_lock": {
+    "metric_signature": null,
+    "fourier_convention": null,
+    "natural_units": null,
+    "gauge_choice": null,
+    "regularization_scheme": null,
+    "renormalization_scheme": null,
+    "coordinate_system": null,
+    "spin_basis": null,
+    "state_normalization": null,
+    "coupling_convention": null,
+    "index_positioning": null,
+    "time_ordering": null,
+    "commutation_convention": null,
+    "levi_civita_sign": null,
+    "generator_normalization": null,
+    "covariant_derivative_sign": null,
+    "gamma_matrix_convention": null,
+    "creation_annihilation_order": null,
+    "custom_conventions": {}
+  },
+  "propagated_uncertainties": [],
+  "pending_todos": [],
+  "blockers": [],
+  "session": {
+    "last_date": null,
+    "stopped_at": null,
+    "resume_file": null
+  }
+}
