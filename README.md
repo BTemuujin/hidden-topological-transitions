@@ -25,14 +25,15 @@ This project requires JAX with GPU support for the L-BFGS optimization to run ef
 pip install -U "jax[cuda12]"
 # Install standard data and plotting libraries
 pip install pandas matplotlib numpy
-
+```
 **2. Usage:**
+```bash
 # Execute the global/local dual-search pipeline (Takes ~45 mins on an HPC node)
 python src/main.py
 
 # Plot the results
 python src/plot_results.py
-
+```
 
 ## 🛠️ Implementation Details
 
@@ -72,4 +73,4 @@ This project was developed using the **Get Physics Done (GPD)** framework, a str
 
 ## 📚 Citation
 If you end up using this repo, please star and cite the original work:
-> Kato, T. and Motome, Y., "Hidden topological transitions in emergent magnetic monopole lattices", *Phys. Rev. B* **107**, 094437 (2023).
+> Kato, T. and Motome, Y., "Hidden topological transitions in emergent magnetic monopole lattices", Phys. Rev. B, 107, 094437 (2023).
