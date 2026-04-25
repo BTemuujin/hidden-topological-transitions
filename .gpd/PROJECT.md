@@ -115,7 +115,7 @@ N/A (Replication project).
 
 ### Computational Environment
 
-V100 GPU nodes using JAX and Optax.
+V100 GPU nodes using JAX and Optax. Implementation utilizes `jax.pmap` for explicit multi-GPU scaling and deterministic seeding for reproducibility.
 
 ## Notation and Conventions
 
@@ -145,7 +145,13 @@ See `.gpd/REQUIREMENTS.md` for the detailed requirements specification.
 | -------- | --------- | --------- |
 | Strict replication | Establish baseline before any extensions | — Pending |
 | JAX/Optax on V100 | Match author's toolchain for consistency | — Pending |
+| Simulated Annealing | Avoid local minima in rugged energy landscape (especially 5Q) | — Implemented |
+| Guided Seed Injection | Inject a priori 1Q and 3Q states to ensure global convergence | — Implemented |
+| Deterministic Seeding | Ensure exact reproducibility via MD5 hash of (p, h, T) | — Implemented |
+| Dual-Search Strategy | Combined Global Random Search and Local Phase Tracking to avoid symmetry traps | — Implemented |
+| Basin-Safe Derivative | Specific Heat $C$ calculation using $\pm \Delta T$ steps with topological jump aversion | — Implemented |
+| Real-Space Mapping | 3D spin reconstruction and 2D slice projections with plaquette markers | — Implemented |
 
 ---
 
-_Last updated: 2026-04-16 after initialization_
+_Last updated: 2026-04-23 after implementation of Fig 6 pipeline and high-resolution p-sweeps_

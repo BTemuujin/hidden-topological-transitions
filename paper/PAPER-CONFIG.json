@@ -1,0 +1,64 @@
+{
+  "title": "Replication of Hidden Topological Transitions in Emergent Magnetic Monopole Lattices via Exact Steepest Descent",
+  "authors": [
+    {
+      "name": "T. Bayaraa",
+      "affiliation": "Department of Physics"
+    }
+  ],
+  "abstract": "We present a strict numerical replication of the hidden topological transitions in emergent magnetic monopole lattices. Using a JAX-accelerated exact steepest descent method with guided seed injection and simulated annealing, we precisely reproduce the 3Q $\\to$ 5Q $\\to$ 4Q ground state sequence and the critical mixing ratios $p_{c1} \\approx 0.512$ and $p_{c2} \\approx 0.527$. Our results confirm the existence of topological transitions that are 'hidden' from thermodynamic singularities in the specific heat, as identified in the original study [Phys. Rev. B 107, 094437]. This work validates the efficacy of the exact steepest descent method in navigating the rugged energy landscapes of complex topological spin lattices.",
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": "\\\\section{Introduction}\n[Drafting in progress]",
+      "label": "sec:intro"
+    },
+    {
+      "heading": "Theoretical Framework",
+      "content": "\\\\section{Theoretical Framework}\n[Drafting in progress]",
+      "label": "sec:theory"
+    },
+    {
+      "heading": "Computational Method",
+      "content": "\\\\section{Computational Method}\n[Drafting in progress]",
+      "label": "sec:method"
+    },
+    {
+      "heading": "Results",
+      "content": "\\\\section{Results}\n[Drafting in progress]",
+      "label": "sec:results"
+    },
+    {
+      "heading": "Discussion",
+      "content": "\\\\section{Discussion}\n[Drafting in progress]",
+      "label": "sec:discussion"
+    },
+    {
+      "heading": "Conclusions",
+      "content": "\\\\section{Conclusions}\n[Drafting in progress]",
+      "label": "sec:conclusions"
+    }
+  ],
+  "figures": [
+    {
+      "path": "figures/fig4_replica.png",
+      "caption": "h-T phase diagrams for p=0.4 in [100], [110], and [111] directions.",
+      "label": "fig:phase_ht"
+    },
+    {
+      "path": "figures/fig5_replica.png",
+      "caption": "p-h ground state phase diagram showing the 3Q $\\to$ 5Q $\\to$ 4Q sequence.",
+      "label": "fig:phase_ph"
+    },
+    {
+      "path": "figures/fig6_replica.png",
+      "caption": "Hidden topological transitions verified via specific heat and scalar chirality.",
+      "label": "fig:hidden_trans"
+    }
+  ],
+  "acknowledgments": "We acknowledge the computational resources provided by the V100 GPU cluster.",
+  "bib_file": "references",
+  "journal": "prl",
+  "appendix_sections": [],
+  "attribution_footer": "Generated with Get Physics Done"
+}

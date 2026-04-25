@@ -1,0 +1,12 @@
+\section{Computational Method}
+\label{sec:method}
+
+To solve the variational problem of maximizing $G(\{\mathbf{S}_0\})$, we implemented a high-performance computational engine using the JAX framework and the Optax optimization library. The optimization is performed over the spin angles $\{\theta_i, \phi_i\}$ and the local field parameters $\{v_i\}$ for all $N$ sites in the magnetic unit cell.
+
+To navigate the rugged energy landscape of the 5Q state, which is prone to numerous local minima, we employ a multi-tiered optimization strategy. First, we utilize \texttt{jax.pmap} to execute parallel searches across multiple GPU devices. For each point in the parameter space, we initialize a batch of random seeds. To ensure that the global minimum is not missed, we supplement these random starts with \textbf{Guided Seed Injection}. Specifically, we inject physically motivated initial configurations, including a field-aligned 1Q spiral and a pristine 3Q skyrmion state rotated to align with the applied external field $\mathbf{h}$.
+
+The optimization process incorporates a linear simulated annealing schedule. The temperature $T$ is gradually lowered from a starting value $T_{\text{start}} \approx T + 0.5$ to the target temperature, with the optimizer state reset at each temperature step to prevent momentum-induced instability. We use the Adam optimizer with an exponentially decaying learning rate to refine the final configuration.
+
+To accurately compute thermodynamic derivatives, such as the specific heat $C = \partial E / \partial T$, we implement a \textbf{Dual-Search strategy}. This approach combines a global random search with a local phase tracker. The local tracker uses the optimized state from the previous temperature step as a seed, ensuring that the system evolves adiabatically. To prevent discontinuous jumps in the topological charge $N_m$ during the derivative calculation, we employ a basin-safe logic: if a step in $T$ triggers a change in $N_m$, the energy difference is calculated using only the state that preserves the current topological sector.
+
+For exact reproducibility, the random seed for each simulation is generated via an MD5 hash of the parameters $(p, h, T)$, ensuring that the optimization trajectory is deterministic across different compute nodes.

@@ -1,0 +1,28 @@
+\section{Theoretical Framework}
+\label{sec:theory}
+
+The magnetic properties of the emergent monopole lattice are governed by a competition between exchange interactions and external fields. We consider a simple cubic lattice where the spin configurations are described by unit vectors $\mathbf{S}_i$. The total Hamiltonian per spin is formulated as a sum of exchange and Zeeman contributions:
+\begin{equation}
+    H = H_{\text{int}} + H_{\text{Zeeman}}
+\end{equation}
+The interaction term $H_{\text{int}}$ incorporates RKKY-type, biquadratic, and Dzyaloshinskii-Moriya (DM) interactions, parameterized by a mixing ratio $p \in [0, 1]$ that interpolates between the 3Q and 4Q regimes. The total interaction energy is given by:
+\begin{equation}
+    H_{\text{int}} = \sum_{\eta} \left[ -J_\eta (\mathbf{S}_{Q_\eta} \cdot \mathbf{S}_{-Q_\eta}) + K_\eta (\mathbf{S}_{Q_\eta} \cdot \mathbf{S}_{-Q_\eta})^2 - D_\eta (\mathbf{S}_{Q_\eta} \times \mathbf{S}_{-Q_\eta}) \cdot \hat{q}_\eta \right]
+\end{equation}
+where $\mathbf{S}_{Q_\eta}$ are the Fourier components of the spin field. The coupling constants are scaled by the mixing ratio: for 3Q vectors ($\eta \in \{1, 2, 3\}$), $J_\eta = J(1-p)$, $K_\eta = K(1-p)$, and $D_\eta = D(1-p)$; for 4Q vectors ($\eta \in \{4, 5, 6, 7\}$), $J_\eta = Jp$, $K_\eta = Kp$, and $D_\eta = Dp$. The Zeeman term is expressed as $H_{\text{Zeeman}} = -\mathbf{h} \cdot \sum_i \mathbf{S}_i$.
+
+To determine the thermodynamic state, we employ the exact steepest descent method. We maximize the variational free energy functional $G(\{\mathbf{S}_0\})$, which approximates the partition function in the thermodynamic limit:
+\begin{equation}
+    G = -\beta H + \frac{1}{N} \sum_i \left[ \ln(4\pi) + \ln\left(\frac{\sinh v_i}{v_i}\right) - v_i L(v_i) \right]
+\end{equation}
+where $v_i = \beta | \mathbf{h}_{\text{eff}, i} |$ is the local field magnitude and $L(v) = \coth v - 1/v$ is the Langevin function. This functional accounts for the thermal magnitude of the spins, $\mathbf{S}_i = L(v_i) \hat{n}_i$.
+
+The topological nature of the resulting states is characterized by the monopole charge density $N_m$ and the scalar spin chirality $\chi_{sc}$. The monopole charge is computed using the Oosterom-Strackee formula for the solid angle $\Omega$ subtended by the spins on the faces of a magnetic unit cell:
+\begin{equation}
+    N_m = \frac{1}{4\pi} \sum_{\text{faces}} \Omega_{\text{face}}
+\end{equation}
+The scalar spin chirality, which serves as a probe for the hidden topological transitions, is defined by the triple product of neighboring spins:
+\begin{equation}
+    \chi_{sc} = \frac{1}{N} \sum_{i,j,k} \mathbf{S}_i \cdot (\mathbf{S}_j \times \mathbf{S}_k)
+\end{equation}
+where the sum runs over elementary triangles in the lattice.
