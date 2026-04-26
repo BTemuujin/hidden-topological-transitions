@@ -15,6 +15,8 @@ The primary objective was to verify the existence of "hidden" topological transi
 ## 📊 Replicated Phase Diagrams
 ![Figure 6 Comparison](results/Comparison_Fig6.png)
 *Figure: 1D magnetic field sweep showing the topological cascade ($N_m = 8 \to 4 \to 0$), the precise specific heat ($C$) step-downs, and 3D/2D real-space spin reconstructions.*
+![Figure 5 Comparison](results/Comparison_Fig5.png)
+![Figure 4 Comparison](results/Comparison_Fig4.png)
 
 ## 💻 Installation & Usage
 This project requires JAX with GPU support for the L-BFGS optimization to run efficiently.
